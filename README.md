@@ -12,36 +12,40 @@ import (
 )
 
 func main() {
-    // This is the simlest way :)
-    out := gosseract.Must(gosseract.Params{Src: "your/img/file.png"})
-    fmt.Println(out)
-
-    // Using client
-    client, _ := gosseract.NewClient()
-    out, _ = client.Src("your/img/file.png").Out()
-    fmt.Println(out)
+		// the simplest way
+    txt := gosseract.Must(gosseract.Params{
+			Src: "your/img/file.png",
+		})
+    fmt.Println(txt)
 }
 ```
 
+# docs
+
+- `func Exec(params Params) (string, error)`
+- `func Must(params Params) string` alias for `Exec`
+
+Client
+
+- `NewClient() *Client`
+- `(c *Client) Src(srcPath string) error`
+- `(c *Client) Img(img image.Image) error`
+- `(c *Client) Digest(digestPath string) error`
+- `(c *Client) Dest(destPath string) error`
+
 # installation
 
+
 1. install [tesseract-ocr](https://code.google.com/p/tesseract-ocr/)
-2. install [go](http://golang.org/doc/install)
-3. install [gosseract](https://godoc.org/github.com/otiai10/gosseract)
-    - `go get github.com/otiai10/gosseract`
-4. install [mint for testing](https://godoc.org/github.com/otiai10/mint)
-    - `go get github.com/otiai10/mint`
-5. run the tests at first↓
+2. `go get github.com/otiai10/gosseract`
+3. `go get github.com/otiai10/mint`
+4. test↓
 
 # test
-```sh
-go test ./...
+
 ```
-
-# dependencies
-
-- [tesseract-ocr](https://code.google.com/p/tesseract-ocr/)#3.02~
-- [mint](https://github.com/otiai10/mint) to simplize tests
+go test ./... -v -bench .
+```
 
 # issues
 - https://github.com/otiai10/gosseract/issues?state=open
