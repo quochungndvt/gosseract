@@ -13,7 +13,7 @@ type tesseractCmd interface {
 
 const TESSERACT = "tesseract"
 const tmpFILEPREFIX = "gosseract"
-const outFILEEXTENSION = ".txt"
+const outFILEEXTENSION = ""
 
 func getTesseractCmd() (tess tesseractCmd, e error) {
 	commandPath, e := lookPath()
