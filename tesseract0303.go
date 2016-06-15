@@ -23,7 +23,6 @@ func (t tesseract0303) Execute(params []string) (res string, e error) {
 	args = append(args, params[0])
 	// generate result file path
 	t.resultFilePath, e = generateTmpFile()
-	fmt.Println(t.resultFilePath, e)
 	if e != nil {
 		return
 	}
@@ -56,6 +55,6 @@ func (t tesseract0303) readResult() (res string, e error) {
 	}
 	buffer, _ := ioutil.ReadFile(file.Name())
 	res = string(buffer)
-	fmt.Println(file.Name(), os.Remove(file.Name()), t.resultFilePath)
+	fmt.Println(file.Name(), os.Remove(file.Name()), os.Remove(t.resultFilePath))
 	return
 }
