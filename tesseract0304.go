@@ -55,6 +55,6 @@ func (t tesseract0304) readResult() (res string, e error) {
 	}
 	buffer, _ := ioutil.ReadFile(file.Name())
 	res = string(buffer)
-	os.Remove(file.Name())
+	fmt.Println(file.Name(), os.Remove(file.Name()), t.resultFilePath)
 	return
 }
