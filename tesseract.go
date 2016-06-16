@@ -8,7 +8,7 @@ import "io/ioutil"
 
 type tesseractCmd interface {
 	Version() string
-	Execute(args []string) (string, error)
+	Execute(args []string, moreArgs []string) (string, error)
 }
 
 const TESSERACT = "tesseract"
