@@ -10,6 +10,7 @@ type Client struct {
 	tesseract tesseractCmd
 	source    path
 	digest    path
+	args      []string
 	Error     error
 }
 type path struct {
@@ -24,12 +25,12 @@ func (p *path) Get() string {
 }
 
 // NewClient provide reference to new Client
-func NewClient() (c *Client, e error) {
+func NewClient(args ...string) (c *Client, e error) {
 	tess, e := getTesseractCmd()
 	if e != nil {
 		return
 	}
-	c = &Client{tesseract: tess}
+	c = &Client{tesseract: tess, args: args}
 	return
 }
 
@@ -107,5 +108,6 @@ func (c *Client) execute() (res string, e error) {
 	if c.digest.Ready() {
 		args = append(args, c.digest.Get())
 	}
-	return c.tesseract.Execute(args)
+
+	return c.tesseract.Execute(args, c.args)
 }
