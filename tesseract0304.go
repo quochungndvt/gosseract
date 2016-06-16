@@ -16,7 +16,7 @@ func (t tesseract0304) Version() string {
 	return t.version
 }
 
-func (t tesseract0303) Execute(params []string, moreArgs []string) (res string, e error) {
+func (t tesseract0304) Execute(params []string, moreArgs []string) (res string, e error) {
 	// command args
 	var args []string
 	// Register source file

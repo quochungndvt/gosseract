@@ -15,7 +15,7 @@ type tesseract0302 struct {
 func (t tesseract0302) Version() string {
 	return t.version
 }
-func (t tesseract0303) Execute(params []string, moreArgs []string) (res string, e error) {
+func (t tesseract0302) Execute(params []string, moreArgs []string) (res string, e error) {
 	// command args
 	var args []string
 	// Register source file
