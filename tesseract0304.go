@@ -16,7 +16,7 @@ func (t tesseract0304) Version() string {
 	return t.version
 }
 
-func (t tesseract0304) Execute(params []string) (res string, e error) {
+func (t tesseract0303) Execute(params []string, moreArgs []string) (res string, e error) {
 	// command args
 	var args []string
 	// Register source file
@@ -33,6 +33,7 @@ func (t tesseract0304) Execute(params []string) (res string, e error) {
 		args = append(args, params[1])
 	}
 
+	args = append(args, moreArgs...)
 	// prepare command
 	cmd := exec.Command(TESSERACT, args...)
 	// execute
